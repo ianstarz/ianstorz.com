@@ -73,6 +73,6 @@ end
 
 # Middleman s3_sync gem config
 activate :s3_sync do |s3_sync|
-  s3_sync.bucket = 'ianstorz.com'
+  s3_sync.bucket = 'ianstorz-com'
   s3_sync.region = 'us-west-2'
 end
