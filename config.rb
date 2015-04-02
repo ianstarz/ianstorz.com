@@ -50,6 +50,20 @@
 # Used for building the canonical link tag
 set :preferred_origin, 'https://ianstorz.com'
 
+# Used for generating absolute URLs
+set :protocol, "https://"
+set :host, "ianstorz.com"
+set :port, 80
+
+configure :development do
+  # Used for generating absolute URLs
+  if Middleman.constants.include?(:PreviewServer)
+    set :protocol, "http://"
+    set :host, Middleman::PreviewServer.host
+    set :port, Middleman::PreviewServer.port
+  end
+end
+
 set :css_dir, 'stylesheets'
 
 set :js_dir, 'javascripts'
@@ -58,14 +72,17 @@ set :images_dir, 'images'
 
 # Build-specific configuration
 configure :build do
+  # Pretty URLs (directory indexes)
+  activate :directory_indexes
+
   # For example, change the Compass output style for deployment
-  # activate :minify_css
+  activate :minify_css
 
   # Minify Javascript on build
-  # activate :minify_javascript
+  activate :minify_javascript
 
   # Enable cache buster
-  # activate :asset_hash
+  activate :asset_hash
 
   # Use relative URLs
   # activate :relative_assets
