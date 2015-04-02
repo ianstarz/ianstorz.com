@@ -47,6 +47,9 @@
 #   end
 # end
 
+# Used for building the canonical link tag
+set :preferred_origin, 'https://ianstorz.com'
+
 set :css_dir, 'stylesheets'
 
 set :js_dir, 'javascripts'
