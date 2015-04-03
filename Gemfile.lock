@@ -1,5 +1,5 @@
 GEM
-  remote: https://rubygems.org/
+  remote: http://rubygems.org/
   specs:
     CFPropertyList (2.3.0)
     activesupport (4.1.9)
@@ -8,6 +8,7 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
+    addressable (2.3.8)
     ansi (1.4.3)
     builder (3.2.2)
     celluloid (0.16.0)
@@ -150,6 +151,10 @@ GEM
       middleman-sprockets (>= 3.1.2)
       sass (>= 3.4.0, < 4.0)
       uglifier (~> 2.5)
+    middleman-blog (3.5.3)
+      addressable (~> 2.3.5)
+      middleman-core (~> 3.2)
+      tzinfo (>= 0.3.0)
     middleman-core (3.3.10)
       activesupport (~> 4.1.0)
       bundler (~> 1.1)
@@ -240,7 +245,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  builder (~> 3.0)
   middleman (~> 3.3.10)
+  middleman-blog (~> 3.5.3)
   middleman-livereload (~> 3.1.0)
   middleman-s3_sync
   pry
