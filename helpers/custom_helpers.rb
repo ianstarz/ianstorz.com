@@ -1,4 +1,10 @@
 module CustomHelpers
+  def meta_description_tag
+    if current_page.data.description
+      %Q(<meta name="description" content="#{current_page.data.description}">)
+    end
+  end
+
   def canonical_link_tag
     path = current_page.destination_path
 
