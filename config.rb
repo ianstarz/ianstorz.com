@@ -30,6 +30,7 @@ activate :blog do |blog|
 end
 
 page "/feed.xml", layout: false
+ignore "/blog/layout.erb"
 
 # Syntax highlighting
 set :markdown_engine, :kramdown
