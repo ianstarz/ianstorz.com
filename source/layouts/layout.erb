@@ -6,10 +6,11 @@
     <meta name="google-site-verification" content="Z9vh_1of4SAXzrFhCIeJtsveS0HRUZdN2eRMwkZo4bQ" />
     <meta name="google-site-verification" content="BDLYy7SdbQWQJAlGiTEAy2A8juwC9CiLr6Boa5z0e-0" />
     
-    <title><%= current_page.data.title || "Ian Storz: Software Devloper" %></title>
+    <title><%= current_page.data.title || "Ian Storz" %></title>
     
     <%= meta_description_tag %>
     <%= canonical_link_tag %>
+    <%= feed_tag :atom, "#{blog.options.prefix.to_s}/feed.xml", title: "Atom Feed" %>
 
     <%= stylesheet_link_tag "all" %>
     <%= javascript_include_tag  "all" %>
