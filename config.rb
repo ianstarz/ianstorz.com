@@ -31,6 +31,10 @@ end
 
 page "/feed.xml", layout: false
 
+# Syntax highlighting
+set :markdown_engine, :kramdown
+activate :syntax, line_numbers: true
+
 # Used for building the canonical link tag
 set :preferred_origin, 'https://ianstorz.com'
 
