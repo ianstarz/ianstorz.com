@@ -1,11 +1,19 @@
 ---
 title: Example Article
+author: Ian Storz
 description: Hello this is an Example Article
 date: 2012-01-01
 tags: example
+
 ---
 
+# <%= current_article.title %>
+
 This is an example article. You probably want to delete it and write your own articles!
+
+Will this inline `code` work?
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 ~~~ruby
 class A < B; def self.create(object = User)
@@ -31,6 +39,22 @@ end
 anIdentifier = an_identifier
 Constant = 1
 render action: :new
+~~~
+
+~~~javascript
+import Ember from 'ember';
+
+export default Ember.Component.extend({
+  computedProperty: Ember.computed('someKey', function() {
+    return this.get('somethingAsync').then(somethingFetched => {
+      return somethingFetched.getOtherStuff();
+    }).then(() => {
+      this.doAnotherThing();
+    }).catch((error, status) => {
+      this.doError(error, status);
+    }).finally(this.cleanup);
+  });
+});
 ~~~
 
 ![The Alt Haha!](<%= image_url('/blog/2012-01-01-example-article/business.jpg') %> "The Title Haha!")
