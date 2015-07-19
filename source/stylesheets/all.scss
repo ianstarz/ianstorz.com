@@ -1,0 +1,55 @@
+@charset 'utf-8';
+
+@import 'normalize';
+@import 'pygments';
+@import 'highlighting';
+
+/* variables */
+$goldenRatio: 1.618;
+
+/* font styles */
+html {
+  font-family: 'Open Sans', sans-serif;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Droid Serif', serif;
+}
+
+/* font colors */
+html { color: #444 }
+
+/* font sizes and spacing */
+html { font-size: 18px; }
+@media (max-width: 900px) { 
+  html { font-size: 17px; } 
+}
+@media (max-width: 400px) {
+  html { font-size: 16px; }
+}
+
+h1 { font-size: 3.00rem; }
+h2 { font-size: 2.25rem; }
+h3 { font-size: 1.75rem; }
+h4 { font-size: 1.50rem; }
+h5 { font-size: 1.25rem; }
+p  { font-size: 1.00rem; }
+
+h1 { line-height: 2.5rem * $goldenRatio; }
+h2 { line-height: 2.5rem * $goldenRatio; }
+h3 { line-height: 2.0rem * $goldenRatio; }
+h4 { line-height: 1.5rem * $goldenRatio; }
+h5 { line-height: 1.0rem * $goldenRatio; }
+p  { line-height: 1.0rem * $goldenRatio; }
+
+h1, h2, h3 { letter-spacing: 1rem / (19 * $goldenRatio); }
+h4, h5, p  { letter-spacing: 1rem / (29 * $goldenRatio); }
+
+
+
+/* Blog */
+article {
+  width: 90%;
+  max-width: 620px;
+  margin: 0 auto;
+}
