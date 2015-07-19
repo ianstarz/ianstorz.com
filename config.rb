@@ -51,6 +51,8 @@ configure :development do
     set :host, Middleman::PreviewServer.host
     set :port, Middleman::PreviewServer.port
   end
+
+  activate :livereload
 end
 
 set :css_dir, 'stylesheets'
