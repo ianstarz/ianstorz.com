@@ -25,11 +25,18 @@
 /* variables */
 $goldenRatio: 1.618;
 $mainFontColor: #222;
-$mainBackgroundColor: #fcfcfb;
+$mainBackgroundColor: #fff;
+$verticalSpacing: 40px;
 
-$codeBackgroundColor: #fefefe;
+$headerBackgroundColor: #000;
+$headerMinHeight: 60px;
+
+$footerBackgroundColor: #000;
+$footerMinHeight: 60px;
+
+$codeBackgroundColor: #fafbfb;
 $gutterBackgroundColor: #eee;
-$codeBorder: 1px solid #ddd;
+$codeBorder: 1px solid #c5c8c9;
 
 $containerWidth: 90%;
 $containerMaxWidth: 720px;
@@ -80,7 +87,25 @@ p  { line-height: 1.0rem * $goldenRatio; }
 h1, h2, h3 { letter-spacing: 1rem / (19 * $goldenRatio); }
 h4, h5, p  { letter-spacing: 1rem / (31 * $goldenRatio); }
 
+pre, code {
+  font-size: 0.9rem;
+}
+
 /* layout */
+header {
+  width: 100%;
+  min-height: $headerMinHeight;
+  background-color: $headerBackgroundColor;
+  margin-bottom: 40px;
+}
+
+footer {
+  width: 100%;
+  min-height: $footerMinHeight;
+  background-color: $footerBackgroundColor;
+  margin-top: 40px;
+}
+
 div.container {
   width: $containerWidth;
   max-width: $containerMaxWidth;
@@ -93,6 +118,16 @@ article {
   margin: 0 auto;
 }
 
+article:after {
+  display: block;
+  width: 100%;
+  margin-top: $verticalSpacing;
+  content: '˜';
+  color: #ccc;
+  text-align: center;
+  font-size: 60px;
+}
+
 h1 {
   margin: 3rem 0;
 }
@@ -103,13 +138,21 @@ h2, h3, h4, h5 {
 
 img {
   display: block;
-  margin: 0 auto;
+  width: 100%;
+  margin: $verticalSpacing auto;
   @include rounded(0.2rem);
+}
+
+code {
+  background-color: $codeBackgroundColor;
+  border: $codeBorder;
+  padding: 4px 8px;
+  @include rounded(3px);
 }
 
 /* code highlighting overrides */
 .highlight {
-  margin: 30px 0;
+  margin: $verticalSpacing 0;
   overflow-x: scroll;
   background-color: $codeBackgroundColor;
   border: $codeBorder;
@@ -117,7 +160,6 @@ img {
 
   table {
     td {
-      width: 30%;
       background-color: $codeBackgroundColor;
       overflow-x: scroll;
 
@@ -137,7 +179,7 @@ img {
 
       // code
       &:last-child {
-        padding-left: 56px;
+        padding-left: 55px;
       }
     }
   }
