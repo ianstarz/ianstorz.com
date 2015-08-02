@@ -5,6 +5,11 @@ module CustomHelpers
     end
   end
 
+  def meta_author_tag
+    author = current_page.data.author || 'Ian Storz'
+    %Q(<meta name="author" content="#{author}">)
+  end
+
   def canonical_link_tag
     path = current_page.destination_path
 

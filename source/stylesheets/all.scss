@@ -32,8 +32,8 @@ $gutterBackgroundColor: #eee;
 $codeBorder: 1px solid #ddd;
 
 $containerWidth: 90%;
-$containerMaxWidth: 640px;
-$blogMaxWidth: 640px;
+$containerMaxWidth: 720px;
+$blogMaxWidth: $containerMaxWidth;
 
 /* font styles */
 html {
