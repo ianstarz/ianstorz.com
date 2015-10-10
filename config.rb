@@ -11,17 +11,17 @@ activate :blog do |blog|
   blog.permalink = "{year}/{month}/{day}/{title}.html"
   # Matcher for blog source files
   blog.sources = "{year}-{month}-{day}-{title}/index.html"
-  blog.taglink = "tags/{tag}.html"
+  # blog.taglink = "tags/{tag}.html"
   blog.layout = "blog/layout"
-  blog.summary_separator = /(READMORE)/
-  blog.summary_length = 250
-  blog.year_link = "{year}.html"
-  blog.month_link = "{year}/{month}.html"
-  blog.day_link = "{year}/{month}/{day}.html"
+  # blog.summary_separator = /(READMORE)/
+  # blog.summary_length = 250
+  # blog.year_link = "{year}.html"
+  # blog.month_link = "{year}/{month}.html"
+  # blog.day_link = "{year}/{month}/{day}.html"
   blog.default_extension = ".md.erb"
 
-  blog.tag_template = "blog/tag.html"
-  blog.calendar_template = "blog/calendar.html"
+  # blog.tag_template = "blog/tag.html"
+  # blog.calendar_template = "blog/calendar.html"
 
   # Enable pagination
   # blog.paginate = true
@@ -29,8 +29,15 @@ activate :blog do |blog|
   # blog.page_link = "page/{num}"
 end
 
-page "/feed.xml", layout: false
+# turn these off until I'm ready for them
+ignore "/blog/calendar.html.erb"
+ignore "/blog/tag.html.erb"
+
+# always ignore the layout
 ignore "/blog/layout.erb"
+
+# don't layout the feed!
+page "/blog/feed.xml", layout: false
 
 # Syntax highlighting
 set :markdown_engine, :kramdown
