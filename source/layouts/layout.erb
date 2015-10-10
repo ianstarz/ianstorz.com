@@ -8,6 +8,9 @@
     
     <link href='http://fonts.googleapis.com/css?family=Droid+Serif|Open+Sans' rel='stylesheet' type='text/css'>
     
+    <link rel="shortcut icon" href="<%= image_url('favicon.png') %>" type="image/x-icon">
+    <link rel="icon" href="<%= image_url('favicon.png') %>" type="image/x-icon">
+
     <title><%= current_page.data.title || "Ian Storz" %></title>
 
     <%= meta_description_tag %>
@@ -21,8 +24,34 @@
   </head>
   
   <body class="<%= page_classes %>">
-    <%= partial 'partials/header' %>
-    <%= yield %>
-    <%= partial 'partials/footer' %>
+    <div id="container">
+      <div id="sidebar">
+        <% link_to '/' do %>
+          <h5>Ian Storz</h5>
+          <div id="my-pic">
+            <img src="<%= image_url('me.jpg') %>" title="Ian Storz" alt="A profile picture of Ian Storz" />
+          </div>
+        <% end %>
+
+        <div id="social-icons">
+          <ul>
+            <li><a href="https://twitter.com/ianstarz" target="_blank" class="icon-twitter" title="Twitter"></a></li>
+            <li><a href="https://www.linkedin.com/in/ianstorz" target="_blank" class="icon-linkedin" title="LinkedIn"></a></li>
+            <li><a href="https://github.com/ianstarz" target="_blank" class="icon-github" title="Github"></a></li>
+            <li><a href="/blog/feed.xml" target="_blank" class="icon-rss" title="Atom Feed"></a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div id="main">
+        <div id="intro">
+          <p>Hi I'm Ian. I work as a software engineer, play classical piano, like to read, and have competed in track and field a good portion of my life. I like to combine these experiences to put my own spin on problem solving.</p>
+        </div>
+
+        <div id="content">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

@@ -4,6 +4,18 @@
 @import 'pygments';
 @import 'highlighting';
 
+/* variables */
+$lineRatio: 1.618;
+
+$backgroundGray: #f0f5f2;
+$lightGray: #858083;
+$darkGray: #101010;
+$gray: #555;
+
+$codeBackgroundColor: #f0f0f0;
+$gutterBackgroundColor: #ddd;
+$codeBorder: 1px solid #c5c8c9;
+
 /* mixins */
 @mixin rounded($radius: 0.5em) {
   -webkit-border-radius: $radius;
@@ -22,30 +34,31 @@
   }
 }
 
-/* variables */
-$goldenRatio: 1.618;
-$mainFontColor: #222;
-$mainBackgroundColor: #fff;
-$verticalSpacing: 40px;
+@mixin profile-pic-clipping() {
+  -webkit-clip-path: circle(50% at 50% 50%);
+  clip-path: circle(50% at 50% 50%);
+}
 
-$headerBackgroundColor: #000;
-$headerMinHeight: 60px;
+@mixin social-icon-grayscale($fadeAmount: 1.2) {
+  -moz-filter: grayscale(1) brightness($fadeAmount);
+  -webkit-filter: grayscale(1) brightness($fadeAmount);
+  -o-filter: grayscale(1) brightness($fadeAmount);
+  -ms-filter: grayscale(1) brightness($fadeAmount);
+  filter: grayscale(1) brightness($fadeAmount);
+}
 
-$footerBackgroundColor: #000;
-$footerMinHeight: 60px;
-
-$codeBackgroundColor: #fafbfb;
-$gutterBackgroundColor: #eee;
-$codeBorder: 1px solid #c5c8c9;
-
-$containerWidth: 90%;
-$containerMaxWidth: 720px;
-$blogMaxWidth: $containerMaxWidth;
+@mixin social-icon-hover() {
+  -moz-filter: grayscale(0) brightness(1);
+  -webkit-filter: grayscale(0) brightness(1);
+  -o-filter: grayscale(0) brightness(1);
+  -ms-filter: grayscale(0) brightness(1);
+  filter: grayscale(0) brightness(1);
+}
 
 /* font styles */
 html {
   font-family: 'Open Sans', sans-serif;
-  background-color: $mainBackgroundColor;
+  background-color: $backgroundGray;
   @include font-smoothing;
 }
 
@@ -58,135 +71,215 @@ pre {
   @include font-smoothing(initial);
 }
 
+a {
+  text-decoration: none;
+}
+
 /* font colors */
-html { color: $mainFontColor; }
+html { color: $darkGray; }
 
 /* font sizes and spacing */
-html { font-size: 18px; }
-@media (max-width: 900px) { 
-  html { font-size: 17px; } 
-}
-@media (max-width: 400px) {
-  html { font-size: 16px; }
-}
+html { font-size: 17px; }
 
-h1 { font-size: 3.00rem; }
-h2 { font-size: 2.25rem; }
-h3 { font-size: 1.75rem; }
-h4 { font-size: 1.50rem; }
-h5 { font-size: 1.25rem; }
-p  { font-size: 1.00rem; }
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2.5rem; }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.5rem; }
+h5 { font-size: 1.2rem; }
+p  { font-size: 1.0rem; }
 
-h1 { line-height: 2.5rem * $goldenRatio; }
-h2 { line-height: 2.5rem * $goldenRatio; }
-h3 { line-height: 2.0rem * $goldenRatio; }
-h4 { line-height: 1.5rem * $goldenRatio; }
-h5 { line-height: 1.0rem * $goldenRatio; }
-p  { line-height: 1.0rem * $goldenRatio; }
+h1 { line-height: 2.5rem * $lineRatio; }
+h2 { line-height: 2.5rem * $lineRatio; }
+h3 { line-height: 2.0rem * $lineRatio; }
+h4 { line-height: 2.0rem * $lineRatio; }
+h5 { line-height: 1.5rem * $lineRatio; }
+p  { line-height: 1.0rem * $lineRatio; }
 
-h1, h2, h3 { letter-spacing: 1rem / (19 * $goldenRatio); }
-h4, h5, p  { letter-spacing: 1rem / (31 * $goldenRatio); }
+h1, h2, h3 { letter-spacing: 1rem / (19 * $lineRatio); }
+h4, h5, p  { letter-spacing: 1rem / (31 * $lineRatio); }
 
-pre, code {
-  font-size: 0.9rem;
-}
+pre, code { font-size: 0.9rem; }
+
+h1 { margin: 50px 0 40px 0; }
+h2 { margin: 40px 0 30px 0; }
+h3 { margin: 40px 0 20px 0; }
+h4 { margin: 40px 0 10px 0; }
+h5 { margin: 40px 0 10px 0; }
+p  { margin: 0 0 30px 0; }
 
 /* layout */
-header {
+html, body {
   width: 100%;
-  min-height: $headerMinHeight;
-  background-color: $headerBackgroundColor;
-  margin-bottom: 40px;
+  height: 100%;
 }
 
-footer {
-  width: 100%;
-  min-height: $footerMinHeight;
-  background-color: $footerBackgroundColor;
-  margin-top: 40px;
-}
+#container {
+  width: 90%;
 
-div.container {
-  width: $containerWidth;
-  max-width: $containerMaxWidth;
-  margin: 0 auto;
-}
+  #sidebar {
+    position: fixed;
+    top: 40px;
+    left: 60px;
+    width: 140px;
+    color: $lightGray;
 
-article {
-  width: 100%;
-  max-width: $blogMaxWidth;
-  margin: 0 auto;
-}
+    a {
+      color: $lightGray;
+    }
 
-article:after {
-  display: block;
-  width: 100%;
-  margin-top: $verticalSpacing;
-  content: '˜';
-  color: #ccc;
-  text-align: center;
-  font-size: 60px;
-}
+    // Name
+    h5 {
+      margin: 0 0 15px 0;
+      font-family: 'Open Sans', sans-serif;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      line-height: 1.0rem;
+    }
 
-h1 {
-  margin: 3rem 0;
-}
+    #my-pic {
+      width: 100%;
 
-h2, h3, h4, h5 {
-  margin: 2.25rem 0 1.5rem 0;
-}
-
-img {
-  display: block;
-  width: 100%;
-  margin: $verticalSpacing auto;
-  @include rounded(0.2rem);
-}
-
-code {
-  background-color: $codeBackgroundColor;
-  border: $codeBorder;
-  padding: 4px 8px;
-  @include rounded(3px);
-}
-
-/* code highlighting overrides */
-.highlight {
-  margin: $verticalSpacing 0;
-  overflow-x: scroll;
-  background-color: $codeBackgroundColor;
-  border: $codeBorder;
-  @include rounded(0.25rem);
-
-  table {
-    td {
-      background-color: $codeBackgroundColor;
-      overflow-x: scroll;
-
-      // gutter
-      &:first-child {
-        position: absolute;
-        width: 20px;
-        padding-right: 10px;
-        padding-left: 10px;
-        border-right: $codeBorder;
-        background-color: $gutterBackgroundColor;
-
-        pre {
-          background-color: $gutterBackgroundColor;
-        }
+      img {
+        width: 100%;
+        height: auto;
+        @include profile-pic-clipping;
       }
+    }
 
-      // code
-      &:last-child {
-        padding-left: 55px;
+    #social-icons {
+      ul {
+        padding: 0;
+
+        li {
+          float: left;
+          margin: 0;
+          padding: 0;
+          list-style: none;
+
+          a {
+            display: block;
+            width: 30px;
+            height: 30px;
+            margin-left: 5px;
+            -moz-transform: translateZ(0);
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+
+            &.icon-twitter {
+              background: url(../images/ui-icon-twitter.png) no-repeat;
+              @include social-icon-grayscale(1.2);
+            }
+
+            &.icon-linkedin {
+              background: url(../images/ui-icon-linkedin.png) no-repeat;
+              @include social-icon-grayscale(1.51);
+            }
+
+            &.icon-github {
+              background: url(../images/ui-icon-github.png) 3px 3px no-repeat;
+              @include social-icon-grayscale(1.14);
+            }
+
+            &.icon-rss {
+              background: url(../images/ui-icon-rss.png) no-repeat;
+              @include social-icon-grayscale(1.6);
+            }
+
+            &:hover {
+              @include social-icon-hover;
+            }
+          }
+        }
       }
     }
   }
 
-  pre {
-    margin: 0;
+  #main {
+    width: 640px;
+    margin-left: 260px;
+
+    #intro {
+      margin-top: 35px;
+      border-bottom: 1px dotted #888;
+      color: $gray;
+
+      p {
+        margin: 0 0 15px 0;
+        font-size: 0.8rem;
+        line-height: 0.8rem * $lineRatio;
+      }
+    }
+  }
+}
+
+/* article layout */
+article {
+  width: 100%;
+  margin: 0 auto;
+
+  &:after {
+    display: block;
+    width: 100%;
+    margin-top: 40px;
+    content: '˜';
+    color: #ccc;
+    text-align: center;
+    font-size: 60px;
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    margin: 40px auto;
+    @include rounded(0.2rem);
+  }
+
+  code {
     background-color: $codeBackgroundColor;
-    border: none;
+    border: $codeBorder;
+    padding: 4px 8px;
+    @include rounded(3px);
+  }
+
+  /* code highlighting overrides */
+  .highlight {
+    margin: 40px 0;
+    overflow-x: scroll;
+    background-color: $codeBackgroundColor;
+    border: $codeBorder;
+    @include rounded(0.25rem);
+
+    table {
+      td {
+        background-color: $codeBackgroundColor;
+        overflow-x: scroll;
+
+        // gutter
+        &:first-child {
+          position: absolute;
+          width: 20px;
+          padding-right: 10px;
+          padding-left: 10px;
+          border-right: $codeBorder;
+          background-color: $gutterBackgroundColor;
+
+          pre {
+            background-color: $gutterBackgroundColor;
+          }
+        }
+
+        // code
+        &:last-child {
+          padding-left: 55px;
+        }
+      }
+    }
+
+    pre {
+      margin: 0;
+      background-color: $codeBackgroundColor;
+      border: none;
+    }
   }
 }
