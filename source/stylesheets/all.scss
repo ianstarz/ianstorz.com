@@ -115,11 +115,11 @@ h4, h5, p  { letter-spacing: 1rem / (31 * $lineRatio); }
 
 pre, code { font-size: 0.9rem; }
 
-h1 { margin: 50px 0 40px 0; }
-h2 { margin: 40px 0 30px 0; }
-h3 { margin: 40px 0 20px 0; }
-h4 { margin: 40px 0 10px 0; }
-h5 { margin: 40px 0 10px 0; }
+h1 { margin: 20px 0 40px 0; }
+h2 { margin: 15px 0 30px 0; }
+h3 { margin: 10px 0 20px 0; }
+h4 { margin: 10px 0 10px 0; }
+h5 { margin: 10px 0 10px 0; }
 p  { margin: 0 0 30px 0; }
 
 /* layout */
@@ -168,6 +168,12 @@ html, body {
     #social-icons {
       ul {
         padding: 0;
+
+        li:nth-of-type(1) {
+          a {
+            margin-left: 0px;
+          }
+        }
 
         li {
           float: left;
@@ -224,7 +230,7 @@ html, body {
     margin-left: 260px;
 
     #intro {
-      margin-top: 35px;
+      margin: 34px 0 50px 0;
       border-bottom: 1px dotted $lightGray;
       color: $gray;
 
@@ -277,7 +283,7 @@ article {
     width: 100%;
     margin-top: 40px;
     content: '˜';
-    color: #ccc;
+    color: $lightGray;
     text-align: center;
     font-size: 60px;
   }

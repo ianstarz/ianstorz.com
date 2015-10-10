@@ -20,7 +20,6 @@
     <%= feed_tag :atom, "#{blog.options.prefix.to_s}/feed.xml", title: "Atom Feed" %>
 
     <%= stylesheet_link_tag "all" %>
-    <%= javascript_include_tag  "all" %>
   </head>
   
   <body class="<%= page_classes %>">
@@ -29,7 +28,7 @@
         <% link_to '/' do %>
           <h5>Ian Storz</h5>
           <div id="my-pic">
-            <img src="<%= image_url('me.jpg') %>" title="Ian Storz" alt="A profile picture of Ian Storz" />
+            <!-- <img src="<%= image_url('me.jpg') %>" title="Ian Storz" alt="A profile picture of Ian Storz" /> -->
           </div>
         <% end %>
 
@@ -62,5 +61,7 @@
         </div>
       </div>
     </div>
+
+    <%= javascript_include_tag  "all" %>
   </body>
 </html>
