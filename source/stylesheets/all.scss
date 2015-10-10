@@ -11,6 +11,7 @@ $backgroundGray: #f0f5f2;
 $lightGray: #858083;
 $darkGray: #101010;
 $gray: #555;
+$linkColor: #a2640f;
 
 $codeBackgroundColor: #f0f0f0;
 $gutterBackgroundColor: #ddd;
@@ -45,6 +46,10 @@ $codeBorder: 1px solid #c5c8c9;
   -o-filter: grayscale(1) brightness($fadeAmount);
   -ms-filter: grayscale(1) brightness($fadeAmount);
   filter: grayscale(1) brightness($fadeAmount);
+
+  -webkit-transition: .25s ease-in-out;
+  -moz-transition: .25s ease-in-out;
+  -o-transition: .25s ease-in-out;
 }
 
 @mixin social-icon-hover() {
@@ -53,6 +58,10 @@ $codeBorder: 1px solid #c5c8c9;
   -o-filter: grayscale(0) brightness(1);
   -ms-filter: grayscale(0) brightness(1);
   filter: grayscale(0) brightness(1);
+
+  -webkit-transition: .25s ease-in-out;
+  -moz-transition: .25s ease-in-out;
+  -o-transition: .25s ease-in-out;
 }
 
 /* font styles */
@@ -72,7 +81,13 @@ pre {
 }
 
 a {
+  color: $darkGray;
   text-decoration: none;
+  border-bottom: 1.5px dotted $linkColor;
+
+  &:hover {
+    color: $linkColor;
+  }
 }
 
 /* font colors */
@@ -115,6 +130,7 @@ html, body {
 
 #container {
   width: 90%;
+  height: 100%;
 
   #sidebar {
     position: fixed;
@@ -125,15 +141,17 @@ html, body {
 
     a {
       color: $lightGray;
+      text-decoration: none;
+      border-bottom: none;
     }
 
-    // Name
+    // name
     h5 {
-      margin: 0 0 15px 0;
+      margin: 0 0 17px 0;
       font-family: 'Open Sans', sans-serif;
       text-align: center;
       text-transform: uppercase;
-      letter-spacing: 2px;
+      letter-spacing: 3px;
       line-height: 1.0rem;
     }
 
@@ -168,26 +186,30 @@ html, body {
 
             &.icon-twitter {
               background: url(../images/ui-icon-twitter.png) no-repeat;
-              @include social-icon-grayscale(1.2);
+              @include social-icon-grayscale(0.9);
             }
 
             &.icon-linkedin {
               background: url(../images/ui-icon-linkedin.png) no-repeat;
-              @include social-icon-grayscale(1.51);
+              @include social-icon-grayscale(1.15);
             }
 
             &.icon-github {
               background: url(../images/ui-icon-github.png) 3px 3px no-repeat;
-              @include social-icon-grayscale(1.14);
+              @include social-icon-grayscale(0.87);
             }
 
             &.icon-rss {
               background: url(../images/ui-icon-rss.png) no-repeat;
-              @include social-icon-grayscale(1.6);
+              @include social-icon-grayscale(1.26);
             }
 
             &:hover {
               @include social-icon-hover;
+
+              &.icon-github {
+                @include social-icon-grayscale(0.0);
+              }
             }
           }
         }
@@ -196,18 +218,50 @@ html, body {
   }
 
   #main {
+    position: relative;
     width: 640px;
+    min-height: 95%;
     margin-left: 260px;
 
     #intro {
       margin-top: 35px;
-      border-bottom: 1px dotted #888;
+      border-bottom: 1px dotted $lightGray;
       color: $gray;
 
       p {
-        margin: 0 0 15px 0;
-        font-size: 0.8rem;
-        line-height: 0.8rem * $lineRatio;
+        margin: 0 0 17px 0;
+        font-size: 0.9rem;
+        line-height: 0.9rem * $lineRatio;
+      }
+    }
+
+    #content {
+      padding-bottom: 120px;
+    }
+
+    #footer {
+      position: absolute;
+      bottom: 40px;
+      left: 0;
+      width: 100%;
+      padding-top: 20px;
+      color: $lightGray;
+      font-size: 0.80rem;
+      border-top: 1px dotted $lightGray;
+
+      #copyright {
+        float: left;
+        margin-right: 40px;
+
+        &:after {
+          content: '•';
+          color: black;
+          margin-left: 40px;
+        }
+      }
+
+      #footer-legal-link {
+        float: left;
       }
     }
   }

@@ -45,11 +45,20 @@
 
       <div id="main">
         <div id="intro">
-          <p>Hi I'm Ian. I work as a software engineer, play classical piano, like to read, and have competed in track and field a good portion of my life. I like to combine these experiences to put my own spin on problem solving.</p>
+          <p>Hi, I'm Ian, a software engineer, classical pianist, avid reader, and former long jumper. I like to combine my experiences to put my own spin on problem solving.</p>
         </div>
 
         <div id="content">
           <%= yield %>
+        </div>
+
+        <div id="footer">
+          <div id="copyright">
+            All Rights Reserved © <span id="copyright-year">2015</span> Ian Storz
+          </div>
+          <div id="footer-legal-link">
+            <%= link_to 'Legal', '/legal' %>
+          </div>
         </div>
       </div>
     </div>

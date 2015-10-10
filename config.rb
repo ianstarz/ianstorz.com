@@ -39,6 +39,9 @@ ignore "/blog/layout.erb"
 # don't layout the feed!
 page "/blog/feed.xml", layout: false
 
+# additional top level pages
+page "/legal"
+
 # Syntax highlighting
 set :markdown_engine, :kramdown
 activate :syntax, line_numbers: true
