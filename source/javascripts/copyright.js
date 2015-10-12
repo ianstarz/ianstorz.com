@@ -1,4 +1,4 @@
-!(function(document, undefined) {
+;(function(document) {
   var container = document.getElementById('copyright-year');
   if (!container) { return; }
 
