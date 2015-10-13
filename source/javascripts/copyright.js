@@ -1,4 +1,6 @@
-;(function(document) {
+'use strict';
+
+(function(document) {
   var container = document.getElementById('copyright-year');
   if (!container) { return; }
 

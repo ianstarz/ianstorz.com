@@ -1,8 +1,8 @@
 <% wrap_layout :layout do %>
-  <article>
+  <div id="article">
     <h1><%= current_page.title %></h1>
     <%= yield %>
-  </article>
-
+  </div>
+  
   <%= partial 'blog/partials/disqus' %>
 <% end %>

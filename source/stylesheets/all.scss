@@ -155,13 +155,28 @@ html, body {
       line-height: 1.0rem;
     }
 
-    #my-pic {
-      width: 100%;
+    #picture-and-percent {
+      position: relative;
+      width: 140px;
+      height: 140px;
 
-      img {
+      svg {
+        position: absolute !important;
+        z-index: 20;
+      }
+
+      #my-pic {
+        position: absolute;
+        z-index: 10;
         width: 100%;
-        height: auto;
-        @include profile-pic-clipping;
+        height: 140px;
+        overflow: hidden;
+
+        img {
+          width: 100%;
+          height: auto;
+          @include profile-pic-clipping;
+        }
       }
     }
 
@@ -261,7 +276,8 @@ html, body {
 
         &:after {
           content: '•';
-          color: black;
+          font-size: 0.9rem;
+          color: $lightGray;
           margin-left: 40px;
         }
       }
@@ -274,7 +290,7 @@ html, body {
 }
 
 /* article layout */
-article {
+#article {
   width: 100%;
   margin: 0 auto;
 
