@@ -50,6 +50,60 @@ Eu duo affert torquatos cotidieque, his ne rebum falli. Inani explicari mea no, 
 
 In vis adhuc ridens omittam, eu tempor invenire aliquando nec, at cum oporteat eloquentiam. Eam ea amet fabellas incorrupte. Ius at essent ornatus pericula, ut usu aperiam ocurreret. Utamur volumus in qui. Quo rebum indoctum scripserit ut. Et facete interesset usu, te nam dicat noster incorrupte, ad quo vidit sadipscing.
 
+<div id="vexflow-example"></div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var container = document.getElementById('vexflow-example');
+  var renderer = new Vex.Flow.Renderer(container, Vex.Flow.Renderer.Backends.RAPHAEL);
+
+  var ctx = renderer.getContext();
+  var stave = new Vex.Flow.Stave(10, 0, 500);
+  stave.addClef("treble").setContext(ctx).draw();
+
+  // Create the notes
+  var notes = [
+    // A quarter-note C.
+    new Vex.Flow.StaveNote({ keys: ["c/4"], duration: "q" }),
+
+    // A quarter-note D.
+    new Vex.Flow.StaveNote({ keys: ["d/4"], duration: "q" }),
+
+    // A quarter-note rest. Note that the key (b/4) specifies the vertical
+    // position of the rest.
+    new Vex.Flow.StaveNote({ keys: ["b/4"], duration: "qr" }),
+
+    // A C-Major chord.
+    new Vex.Flow.StaveNote({ keys: ["c/4", "e/4", "g/4"], duration: "q" })
+  ];
+
+  // Create a second voice, with just one whole note
+  var notes2 = [
+    new Vex.Flow.StaveNote({ keys: ["c/4"], duration: "w" })
+  ];
+
+  // Create a voice in 4/4
+  function create_4_4_voice() {
+    return new Vex.Flow.Voice({
+      num_beats: 4,
+      beat_value: 4,
+      resolution: Vex.Flow.RESOLUTION
+    });
+  }
+
+  // Create voices and add notes to each of them.
+  var voice = create_4_4_voice().addTickables(notes);
+  var voice2 = create_4_4_voice().addTickables(notes2);
+
+  // Format and justify the notes to 500 pixels
+  var formatter = new Vex.Flow.Formatter().
+    joinVoices([voice, voice2]).format([voice, voice2], 500);
+
+  // Render voice
+  voice.draw(ctx, stave);
+  voice2.draw(ctx, stave);
+});
+</script>
 
 ### And now for the hard part
 
